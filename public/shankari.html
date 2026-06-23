@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Shankari Dental Health Centre — Dr. H. L. Jayakumar | Rajajinagar, Bengaluru</title>
+<meta name="description" content="Pediatric & cosmetic dentistry in Rajajinagar, Bengaluru. Dr. H. L. Jayakumar, BDS, MDS (Pedodontics) — 30+ years, 5.0★ from 242 patients." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Kannada:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   SHANKARI DENTAL — Design tokens
+   Palette: deep teal trust + ivory warmth + terracotta accent
+   --------------------------------------------------------- */
+:root{
+  --ink:#0E2A2B;          /* deep teal, near-black */
+  --teal:#0F4C4A;         /* primary trust */
+  --teal-soft:#1f6c69;
+  --ivory:#F4EDE2;        /* warm ivory bg */
+  --paper:#FBF7F0;        /* lighter card bg */
+  --terracotta:#C8553D;   /* signature accent */
+  --gold:#C9A24B;         /* subtle premium */
+  --line:rgba(14,42,43,.14);
+  --muted:rgba(14,42,43,.62);
+
+  --f-display:"Fraunces", serif;
+  --f-body:"Inter", system-ui, sans-serif;
+  --f-kn:"Noto Sans Kannada", sans-serif;
+
+  --ease:cubic-bezier(0.22, 1, 0.36, 1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--ivory);color:var(--ink);font-family:var(--f-body);font-size:16px;-webkit-font-smoothing:antialiased;line-height:1.5;overflow-x:hidden}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
+::selection{background:var(--terracotta);color:var(--paper)}
+
+/* Focus visibility */
+a:focus-visible, button:focus-visible{outline:2px solid var(--terracotta);outline-offset:3px;border-radius:4px}
+
+/* Smooth scroll container */
+html{scroll-behavior:auto} /* overridden by JS lerp */
+
+/* ============= CURSOR ============= */
+.cursor{position:fixed;top:0;left:0;width:28px;height:28px;border:1.5px solid var(--ink);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .3s var(--ease), height .3s var(--ease), background .3s var(--ease), border-color .3s var(--ease);mix-blend-mode:difference;background:transparent;display:none}
+.cursor.active{display:block}
+.cursor.is-hover{width:64px;height:64px;background:var(--terracotta);border-color:var(--terracotta);mix-blend-mode:normal}
+.cursor .label{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--paper);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;opacity:0;transition:opacity .2s}
+.cursor.is-hover .label{opacity:1}
+@media (hover:none){.cursor{display:none!important}}
+
+/* ============= PRELOADER ============= */
+.preload{position:fixed;inset:0;z-index:9998;background:var(--ink);color:var(--ivory);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.5rem}
+.preload .wm{font-family:var(--f-display);font-weight:400;font-size:clamp(2rem,6vw,4rem);letter-spacing:-.02em;overflow:hidden}
+.preload .wm span{display:inline-block;transform:translateY(110%);animation:wmUp .9s var(--ease) forwards}
+.preload .wm span:nth-child(2){animation-delay:.08s}
+.preload .wm span:nth-child(3){animation-delay:.16s}
+.preload .kn{font-family:var(--f-kn);font-size:.85rem;color:rgba(244,237,226,.55);opacity:0;animation:fadeIn .6s var(--ease) .5s forwards}
+.preload.gone{transform:translateY(-100%);transition:transform 1s var(--ease)}
+@keyframes wmUp{to{transform:translateY(0)}}
+@keyframes fadeIn{to{opacity:1}}
+
+/* ============= NAV ============= */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.25rem clamp(1rem,4vw,3rem);transition:background .4s var(--ease), backdrop-filter .4s var(--ease)}
+.nav.scrolled{background:rgba(244,237,226,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.brand{display:flex;flex-direction:column;line-height:1}
+.brand .en{font-family:var(--f-display);font-weight:500;font-size:1.05rem;letter-spacing:-.01em}
+.brand .kn{font-family:var(--f-kn);font-size:.7rem;color:var(--muted);margin-top:.15rem}
+.nav ul{display:flex;gap:2rem;list-style:none}
+.nav ul a{font-size:.85rem;letter-spacing:.02em;position:relative}
+.nav ul a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:right;transition:transform .4s var(--ease)}
+.nav ul a:hover::after{transform:scaleX(1);transform-origin:left}
+.nav .cta{background:var(--ink);color:var(--ivory);padding:.7rem 1.25rem;border-radius:999px;font-size:.85rem;font-weight:500;transition:background .3s}
+.nav .cta:hover{background:var(--terracotta)}
+@media(max-width:780px){.nav ul{display:none}}
+
+/* ============= HERO ============= */
+.hero{min-height:100vh;padding:8rem clamp(1rem,4vw,3rem) 4rem;display:grid;grid-template-columns:1.2fr 1fr;gap:3rem;align-items:center;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-20%;right:-10%;width:60vw;height:60vw;background:radial-gradient(circle, rgba(15,76,74,.08), transparent 60%);pointer-events:none}
+.hero .eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);margin-bottom:1.75rem}
+.hero .eyebrow::before{content:"";width:32px;height:1px;background:var(--teal)}
+.hero h1{font-family:var(--f-display);font-weight:400;font-size:clamp(2.4rem,6.2vw,5.4rem);line-height:.98;letter-spacing:-.025em;color:var(--ink)}
+.hero h1 .it{font-style:italic;color:var(--terracotta);font-weight:300}
+.hero h1 .kn{display:block;font-family:var(--f-kn);font-size:clamp(1rem,1.8vw,1.4rem);color:var(--muted);margin-top:1.25rem;letter-spacing:0;font-weight:400}
+.hero .sub{margin-top:2rem;max-width:46ch;font-size:1.05rem;color:var(--muted);line-height:1.65}
+.hero .actions{margin-top:2.5rem;display:flex;gap:1rem;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.7rem;padding:1.05rem 1.6rem;border-radius:999px;font-size:.92rem;font-weight:500;transition:transform .3s var(--ease), background .3s, color .3s}
+.btn-primary{background:var(--terracotta);color:var(--paper)}
+.btn-primary:hover{background:var(--ink);transform:translateY(-2px)}
+.btn-ghost{border:1px solid var(--ink);color:var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:var(--ivory)}
+.btn .arrow{transition:transform .3s var(--ease)}
+.btn:hover .arrow{transform:translateX(4px)}
+
+/* Hero visual — abstract smile/tooth motif */
+.hero-vis{position:relative;aspect-ratio:1/1;max-width:520px;justify-self:end;width:100%}
+.hero-vis svg{width:100%;height:100%}
+.hero-vis .ring{animation:spin 40s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hero-vis .float{animation:float 6s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+.hero-bottom{position:absolute;bottom:2rem;left:clamp(1rem,4vw,3rem);right:clamp(1rem,4vw,3rem);display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;font-size:.78rem;color:var(--muted);letter-spacing:.05em}
+.hero-bottom .scroll-ind{display:flex;align-items:center;gap:.7rem;text-transform:uppercase}
+.hero-bottom .scroll-ind .line{width:40px;height:1px;background:var(--muted);position:relative;overflow:hidden}
+.hero-bottom .scroll-ind .line::after{content:"";position:absolute;inset:0;background:var(--ink);transform:translateX(-100%);animation:scrollHint 2.2s var(--ease) infinite}
+@keyframes scrollHint{50%{transform:translateX(0)}100%{transform:translateX(100%)}}
+
+@media(max-width:880px){
+  .hero{grid-template-columns:1fr;padding-top:7rem}
+  .hero-vis{max-width:320px;justify-self:start;opacity:.9}
+  .hero-bottom{position:static;margin-top:3rem}
+}
+
+/* ============= TRUST STRIP ============= */
+.trust{padding:clamp(4rem,8vw,7rem) clamp(1rem,4vw,3rem);background:var(--ink);color:var(--ivory);position:relative;overflow:hidden}
+.trust .label{font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(244,237,226,.5);margin-bottom:2.5rem;text-align:center}
+.trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;max-width:1100px;margin:0 auto}
+.trust-item{text-align:center;padding:1rem 0;position:relative}
+.trust-item:not(:last-child)::after{content:"";position:absolute;right:-1rem;top:30%;bottom:30%;width:1px;background:rgba(244,237,226,.15)}
+.trust-num{font-family:var(--f-display);font-weight:300;font-size:clamp(2.8rem,6vw,5rem);line-height:1;letter-spacing:-.03em}
+.trust-num .star{color:var(--gold);font-size:.6em;vertical-align:.25em;margin-left:.15em}
+.trust-num .plus{color:var(--terracotta)}
+.trust-cap{margin-top:.8rem;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(244,237,226,.65)}
+@media(max-width:780px){.trust-grid{grid-template-columns:repeat(2,1fr);gap:2.5rem 1rem}.trust-item:nth-child(2)::after{display:none}}
+
+/* ============= SECTION SHELL ============= */
+section{padding:clamp(5rem,10vw,9rem) clamp(1rem,4vw,3rem)}
+.sec-head{max-width:1100px;margin:0 auto 4rem}
+.sec-eyebrow{font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:1rem}
+.sec-title{font-family:var(--f-display);font-weight:400;font-size:clamp(2rem,4.5vw,3.6rem);line-height:1.05;letter-spacing:-.02em;max-width:22ch}
+.sec-title .it{font-style:italic;color:var(--terracotta)}
+
+/* ============= SERVICES ============= */
+.services{background:var(--paper)}
+.svc-group{max-width:1200px;margin:0 auto 3rem;display:grid;grid-template-columns:240px 1fr;gap:3rem;padding-top:3rem;border-top:1px solid var(--line)}
+.svc-group h3{font-family:var(--f-display);font-weight:400;font-size:1.5rem;color:var(--teal);font-style:italic}
+.svc-group h3 small{display:block;font-family:var(--f-body);font-style:normal;font-size:.72rem;color:var(--muted);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.6rem}
+.svc-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--line)}
+.svc{background:var(--paper);padding:1.75rem 1.5rem;position:relative;overflow:hidden;transition:background .5s var(--ease);cursor:pointer}
+.svc:hover{background:var(--ink);color:var(--ivory)}
+.svc .num{font-size:.7rem;color:var(--muted);letter-spacing:.1em;transition:color .5s}
+.svc:hover .num{color:rgba(244,237,226,.5)}
+.svc h4{font-family:var(--f-display);font-weight:500;font-size:1.25rem;margin-top:1.5rem;letter-spacing:-.01em;line-height:1.2}
+.svc .arr{position:absolute;top:1.5rem;right:1.5rem;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:transparent;transition:background .5s, transform .5s var(--ease)}
+.svc:hover .arr{background:var(--terracotta);transform:rotate(-45deg)}
+.svc .arr svg{stroke:currentColor}
+@media(max-width:780px){.svc-group{grid-template-columns:1fr;gap:1.5rem}}
+
+/* ============= SIGNATURE SCROLL SECTION ============= */
+.signature{background:var(--ivory);position:relative}
+.sig-pin{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.sig-stage{position:relative;width:100%;max-width:1200px;padding:0 clamp(1rem,4vw,3rem);height:100%;display:flex;align-items:center}
+.sig-eyebrow{position:absolute;top:6rem;left:50%;transform:translateX(-50%);font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal)}
+.sig-progress{position:absolute;bottom:4rem;left:50%;transform:translateX(-50%);width:200px;height:1px;background:var(--line)}
+.sig-progress .bar{height:100%;background:var(--ink);width:0;transition:width .1s linear}
+
+.sig-side{position:absolute;top:50%;width:42%;transform:translateY(-50%);transition:opacity .8s var(--ease), transform .8s var(--ease)}
+.sig-side.left{left:clamp(1rem,4vw,3rem)}
+.sig-side.right{right:clamp(1rem,4vw,3rem);text-align:right}
+.sig-side .tag{font-family:var(--f-kn);font-size:.85rem;color:var(--terracotta);margin-bottom:1rem}
+.sig-side h3{font-family:var(--f-display);font-weight:400;font-size:clamp(1.8rem,3.6vw,3rem);line-height:1.05;letter-spacing:-.02em}
+.sig-side h3 .it{font-style:italic;color:var(--teal)}
+.sig-side p{margin-top:1.5rem;color:var(--muted);max-width:38ch;font-size:1rem;line-height:1.7}
+.sig-side.right p{margin-left:auto}
+
+.sig-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:280px;height:280px;display:flex;align-items:center;justify-content:center}
+.sig-center svg{width:100%;height:100%;overflow:visible}
+.sig-center .merge-text{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;font-family:var(--f-display);font-style:italic;font-size:1.4rem;color:var(--ink);opacity:0;transition:opacity .5s}
+
+/* phase classes */
+.sig-pin[data-phase="0"] .sig-side.left{opacity:1;transform:translate(0,-50%)}
+.sig-pin[data-phase="0"] .sig-side.right{opacity:.15;transform:translate(20px,-50%)}
+.sig-pin[data-phase="1"] .sig-side.left{opacity:.15;transform:translate(-20px,-50%)}
+.sig-pin[data-phase="1"] .sig-side.right{opacity:1;transform:translate(0,-50%)}
+.sig-pin[data-phase="2"] .sig-side{opacity:.25}
+.sig-pin[data-phase="2"] .sig-center .merge-text{opacity:1}
+
+@media(max-width:880px){
+  .sig-pin{height:auto;position:relative;padding:5rem 0}
+  .sig-side{position:static;width:100%;transform:none!important;opacity:1!important;text-align:left!important;margin-bottom:3rem}
+  .sig-side.right p{margin-left:0}
+  .sig-center{position:relative;margin:2rem auto;transform:none;left:auto;top:auto;width:180px;height:180px}
+  .sig-eyebrow,.sig-progress{position:static;transform:none;margin:0 auto 2rem;display:block;text-align:center}
+}
+
+/* ============= ABOUT DR ============= */
+.about{background:var(--paper);display:grid;grid-template-columns:1fr 1fr;gap:5rem;max-width:1300px;margin:0 auto;align-items:center}
+.about-vis{aspect-ratio:4/5;background:var(--ink);border-radius:8px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:2rem;color:var(--ivory)}
+.about-vis::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 30% 30%, rgba(200,85,61,.4), transparent 60%);}
+.about-vis::after{content:"DR.JK";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--f-display);font-size:9rem;font-weight:300;color:rgba(244,237,226,.08);letter-spacing:-.05em}
+.about-vis .credline{position:relative;font-family:var(--f-kn);font-size:.85rem;color:rgba(244,237,226,.7)}
+.about-content .sec-eyebrow{margin-bottom:1rem}
+.about-content h2{font-family:var(--f-display);font-weight:400;font-size:clamp(2rem,4vw,3.2rem);line-height:1.05;letter-spacing:-.02em;margin-bottom:1.5rem}
+.about-content h2 .it{font-style:italic;color:var(--terracotta)}
+.about-content p{color:var(--muted);font-size:1.02rem;line-height:1.75;margin-bottom:1rem;max-width:48ch}
+.creds{margin-top:2rem;display:grid;grid-template-columns:repeat(2,1fr);gap:1rem 2rem;padding-top:2rem;border-top:1px solid var(--line)}
+.cred{display:flex;flex-direction:column;gap:.25rem}
+.cred .k{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.cred .v{font-family:var(--f-display);font-size:1.05rem;color:var(--ink)}
+@media(max-width:880px){.about{grid-template-columns:1fr;gap:3rem}.about-vis{max-width:360px}}
+
+/* ============= TESTIMONIALS ============= */
+.testimonials{background:var(--teal);color:var(--ivory);overflow:hidden}
+.testimonials .sec-eyebrow{color:rgba(244,237,226,.65)}
+.testimonials .sec-title{color:var(--ivory)}
+.test-meta{max-width:1100px;margin:0 auto 3rem;display:flex;align-items:center;gap:1.25rem;font-size:.85rem;color:rgba(244,237,226,.75)}
+.test-meta .stars{color:var(--gold);letter-spacing:.15em}
+.test-track{display:flex;gap:1.5rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 clamp(1rem,4vw,3rem) 1rem;scrollbar-width:none}
+.test-track::-webkit-scrollbar{display:none}
+.test-card{flex:0 0 min(420px,85vw);background:rgba(244,237,226,.06);border:1px solid rgba(244,237,226,.1);border-radius:16px;padding:2rem;scroll-snap-align:start;backdrop-filter:blur(6px)}
+.test-card .quote{font-family:var(--f-display);font-style:italic;font-size:1.25rem;line-height:1.5;letter-spacing:-.01em}
+.test-card .stars{color:var(--gold);margin:1.5rem 0 1rem;letter-spacing:.15em}
+.test-card .who{font-size:.85rem;color:rgba(244,237,226,.65)}
+
+/* ============= LOCATION ============= */
+.location{display:grid;grid-template-columns:1.1fr 1fr;gap:4rem;max-width:1300px;margin:0 auto;align-items:start}
+.loc-map{aspect-ratio:5/4;background:var(--ink);border-radius:12px;position:relative;overflow:hidden}
+.loc-map svg{width:100%;height:100%}
+.loc-map .pin{position:absolute;top:48%;left:52%;transform:translate(-50%,-100%)}
+.loc-map .pin .dot{width:18px;height:18px;border-radius:50%;background:var(--terracotta);box-shadow:0 0 0 6px rgba(200,85,61,.25);animation:pulse 2s var(--ease) infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(200,85,61,.4)}50%{box-shadow:0 0 0 14px rgba(200,85,61,0)}}
+.loc-map .pin .lbl{margin-top:.5rem;background:var(--paper);color:var(--ink);font-size:.72rem;padding:.3rem .6rem;border-radius:4px;white-space:nowrap;font-weight:600}
+.loc-info h3{font-family:var(--f-display);font-weight:400;font-size:1.4rem;margin-bottom:.5rem}
+.loc-info .addr{color:var(--muted);line-height:1.7;margin-bottom:.5rem}
+.loc-info .landmark{font-size:.85rem;color:var(--terracotta);font-style:italic;margin-bottom:2rem}
+.hours{margin-top:2rem;border-top:1px solid var(--line);padding-top:1.5rem}
+.hours h4{display:flex;justify-content:space-between;align-items:center;font-family:var(--f-display);font-weight:500;font-size:1.1rem;margin-bottom:1rem}
+.status{display:inline-flex;align-items:center;gap:.5rem;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--terracotta);font-family:var(--f-body);font-weight:600}
+.status .dot{width:8px;height:8px;border-radius:50%;background:var(--terracotta);animation:pulseDot 2s infinite}
+@keyframes pulseDot{50%{opacity:.4}}
+.hours table{width:100%;border-collapse:collapse;font-size:.92rem}
+.hours td{padding:.6rem 0;border-bottom:1px dashed var(--line);color:var(--muted)}
+.hours td:first-child{color:var(--ink);font-weight:500}
+.hours td:last-child{text-align:right;font-variant-numeric:tabular-nums}
+.hours tr.today td{color:var(--ink);font-weight:600}
+@media(max-width:880px){.location{grid-template-columns:1fr;gap:2.5rem}}
+
+/* ============= BOOKING CTA ============= */
+.booking{background:var(--ink);color:var(--ivory);text-align:center;padding:clamp(5rem,12vw,10rem) clamp(1rem,4vw,3rem);position:relative;overflow:hidden}
+.booking::before{content:"ಶಂಕರಿ";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--f-kn);font-size:clamp(10rem,28vw,22rem);color:rgba(244,237,226,.04);font-weight:600;pointer-events:none;line-height:1}
+.booking .inner{position:relative;max-width:780px;margin:0 auto}
+.booking .sec-eyebrow{color:rgba(244,237,226,.6)}
+.booking h2{font-family:var(--f-display);font-weight:400;font-size:clamp(2.2rem,5.5vw,4.5rem);line-height:1.05;letter-spacing:-.02em;margin:1.5rem 0 2rem}
+.booking h2 .it{font-style:italic;color:var(--terracotta)}
+.booking p{color:rgba(244,237,226,.7);max-width:48ch;margin:0 auto 2.5rem;font-size:1.05rem;line-height:1.7}
+.booking .btn-primary{padding:1.3rem 2.2rem;font-size:1rem}
+.booking .alt{margin-top:1.5rem;font-size:.85rem;color:rgba(244,237,226,.55)}
+.booking .alt a{color:var(--ivory);border-bottom:1px solid rgba(244,237,226,.3)}
+
+/* ============= FOOTER ============= */
+footer{background:var(--ivory);padding:4rem clamp(1rem,4vw,3rem) 2rem;border-top:1px solid var(--line)}
+.foot-grid{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid var(--line)}
+.foot-brand .en{font-family:var(--f-display);font-size:1.5rem;letter-spacing:-.01em}
+.foot-brand .kn{font-family:var(--f-kn);color:var(--muted);font-size:.95rem;margin-top:.3rem}
+.foot-brand p{margin-top:1rem;color:var(--muted);font-size:.9rem;max-width:30ch;line-height:1.6}
+.foot-col h5{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
+.foot-col a, .foot-col p{display:block;font-size:.92rem;line-height:1.7;color:var(--ink)}
+.foot-col a:hover{color:var(--terracotta)}
+.foot-base{max-width:1300px;margin:2rem auto 0;display:flex;justify-content:space-between;font-size:.78rem;color:var(--muted);flex-wrap:wrap;gap:1rem}
+.foot-base .kn{font-family:var(--f-kn)}
+@media(max-width:780px){.foot-grid{grid-template-columns:1fr 1fr;gap:2rem}}
+
+/* ============= REVEAL ============= */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease), transform .9s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.reveal-stagger > *{opacity:0;transform:translateY(20px);transition:opacity .8s var(--ease), transform .8s var(--ease)}
+.reveal-stagger.in > *{opacity:1;transform:none}
+.reveal-stagger.in > *:nth-child(1){transition-delay:.05s}
+.reveal-stagger.in > *:nth-child(2){transition-delay:.13s}
+.reveal-stagger.in > *:nth-child(3){transition-delay:.21s}
+.reveal-stagger.in > *:nth-child(4){transition-delay:.29s}
+.reveal-stagger.in > *:nth-child(5){transition-delay:.37s}
+.reveal-stagger.in > *:nth-child(6){transition-delay:.45s}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+  .reveal,.reveal-stagger>*{opacity:1!important;transform:none!important}
+  .cursor{display:none!important}
+  .sig-pin{position:static;height:auto}
+  .sig-side{position:static;width:100%;transform:none;opacity:1;text-align:left}
+}
+</style>
+</head>
+<body>
+
+<!-- Custom cursor -->
+<div class="cursor" aria-hidden="true"><span class="label"></span></div>
+
+<!-- Preloader -->
+<div class="preload" id="preload">
+  <div class="wm"><span>Shankari</span> <span>Dental</span> <span>Centre</span></div>
+  <div class="kn">ಶಂಕರಿ ಡೆಂಟಲ್ ಹೆಲ್ತ್ ಸೆಂಟರ್</div>
+</div>
+
+<!-- Nav -->
+<nav class="nav" id="nav">
+  <div class="brand">
+    <span class="en">Shankari Dental</span>
+    <span class="kn">ಶಂಕರಿ ಡೆಂಟಲ್ ಹೆಲ್ತ್ ಸೆಂಟರ್</span>
+  </div>
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#story">Approach</a></li>
+    <li><a href="#doctor">Dr. Jayakumar</a></li>
+    <li><a href="#visit">Visit</a></li>
+  </ul>
+  <a class="cta" href="https://wa.me/919845151761?text=Hi%2C%20I%27d%20like%20to%20book%20an%20appointment%20at%20Shankari%20Dental%20Health%20Centre" data-cursor="Book">Book on WhatsApp</a>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div>
+    <div class="eyebrow reveal">Rajajinagar · Bengaluru · Est. practice 30+ yrs</div>
+    <h1 class="reveal">Gentle for your <span class="it">child.</span><br>Precise for your <span class="it">smile.</span>
+      <span class="kn">ಶಂಕರಿ ಡೆಂಟಲ್ ಹೆಲ್ತ್ ಸೆಂಟರ್ — ರಾಜಾಜಿನಗರ</span>
+    </h1>
+    <p class="sub reveal">A pediatric & cosmetic dental practice led by Dr. H. L. Jayakumar — three decades of careful, conversational dentistry, trusted by 242 families across West Bangalore.</p>
+    <div class="actions reveal">
+      <a class="btn btn-primary" href="https://wa.me/919845151761?text=Hi%2C%20I%27d%20like%20to%20book%20an%20appointment%20at%20Shankari%20Dental%20Health%20Centre" data-cursor="Book">
+        Book on WhatsApp
+        <span class="arrow">→</span>
+      </a>
+      <a class="btn btn-ghost" href="tel:+919845151761" data-cursor="Call">Call 098451 51761</a>
+    </div>
+  </div>
+  <div class="hero-vis reveal" aria-hidden="true">
+    <!-- Abstract smile/tooth motif: replace with real clinic photo if available -->
+    <!-- PLACEHOLDER: replace with real clinic/doctor photo -->
+    <svg viewBox="0 0 500 500" fill="none">
+      <g class="ring">
+        <circle cx="250" cy="250" r="240" stroke="#0F4C4A" stroke-width=".8" stroke-dasharray="2 6" opacity=".35"/>
+        <circle cx="250" cy="250" r="200" stroke="#0F4C4A" stroke-width=".6" opacity=".25"/>
+      </g>
+      <g class="float">
+        <!-- abstract smile arc -->
+        <path d="M120 230 Q250 380 380 230" stroke="#0E2A2B" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M150 240 Q250 330 350 240" stroke="#C8553D" stroke-width="1.2" stroke-linecap="round" opacity=".7"/>
+        <!-- abstracted tooth -->
+        <path d="M250 110 C 215 110, 200 140, 205 180 C 208 210, 220 240, 235 245 C 240 247, 245 240, 245 220 C 245 240, 250 250, 255 245 C 270 240, 282 210, 285 180 C 290 140, 285 110, 250 110 Z"
+              fill="#F4EDE2" stroke="#0E2A2B" stroke-width="2"/>
+        <circle cx="250" cy="160" r="6" fill="#C9A24B"/>
+      </g>
+      <text x="250" y="450" text-anchor="middle" font-family="Fraunces" font-style="italic" font-size="14" fill="#0E2A2B" opacity=".5">since the early 1990s</text>
+    </svg>
+  </div>
+  <div class="hero-bottom">
+    <span>5.0 ★ · 242 Google reviews</span>
+    <span class="scroll-ind">Scroll <span class="line"></span></span>
+  </div>
+</header>
+
+<!-- TRUST STRIP -->
+<section class="trust">
+  <div class="label reveal">A practice measured in patients, not promotions</div>
+  <div class="trust-grid reveal-stagger">
+    <div class="trust-item"><div class="trust-num"><span class="count" data-target="5" data-decimals="1">0.0</span><span class="star">★</span></div><div class="trust-cap">Google rating</div></div>
+    <div class="trust-item"><div class="trust-num"><span class="count" data-target="242">0</span></div><div class="trust-cap">Verified reviews</div></div>
+    <div class="trust-item"><div class="trust-num"><span class="count" data-target="30">0</span><span class="plus">+</span></div><div class="trust-cap">Years in practice</div></div>
+    <div class="trust-item"><div class="trust-num" style="font-size:clamp(1.6rem,3vw,2.4rem);padding-top:.7rem">MDS<span style="color:var(--gold)">·</span>Pedo</div><div class="trust-cap">Specialist credential</div></div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="sec-head reveal">
+    <div class="sec-eyebrow">— Services</div>
+    <h2 class="sec-title">Ten treatments. <span class="it">Four chairs of expertise.</span></h2>
+  </div>
+
+  <div class="svc-group reveal">
+    <h3><small>01 — Pediatric</small>Gentle for first visits</h3>
+    <div class="svc-list">
+      <div class="svc" data-cursor="View"><div class="num">P/01</div><h4>Pit & fissure sealant therapy</h4><div class="arr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+      <div class="svc" data-cursor="View"><div class="num">P/02</div><h4>Teeth jewellery</h4><div class="arr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+      <div class="svc" data-cursor="View"><div class="num">P/03</div><h4>Oral lesion screening</h4><div class="arr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+    </div>
+  </div>
+
+  <div class="svc-group reveal">
+    <h3><small>02 — Cosmetic & Aesthetic</small>Precise for your smile</h3>
+    <div class="svc-list">
+      <div class="svc" data-cursor="View"><div class="num">C/01</div><h4>Laser depigmentation</h4><div class="arr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+      <div class="svc" data-cursor="View"><div class="num">C/02</div><h4>Invisalign & teeth straightening</h4><div class="arr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+      <div class="svc" data-cursor="View"><div class="num">C/03</div><h4>Orthodontic treatment</h4><div class="arr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+    </div>
+  </div>
+
+  <div class="svc-group reveal">
+    <h3><small>03 — Restorative</small>Built to last</h3>
+    <div class="svc-list">
+      <div class="svc" data-cursor="View"><div class="num">R/01</div><h4>Crowns & bridges</h4><div class="arr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+      <div class="svc" data-cursor="View"><div class="num">R/02</div><h4>Acrylic partial dentures</h4><div class="arr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+      <div class="svc" data-cursor="View"><div class="num">R/03</div><h4>Dental implants</h4><div class="arr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+    </div>
+  </div>
+
+  <div class="svc-group reveal">
+    <h3><small>04 — Surgical</small>When it can't wait</h3>
+    <div class="svc-list">
+      <div class="svc" data-cursor="View"><div class="num">S/01</div><h4>Wisdom tooth extraction</h4><div class="arr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SIGNATURE: Two kinds of patients -->
+<section class="signature" id="story" style="padding:0">
+  <!-- 300vh of scroll to drive 3 phases -->
+  <div style="height:300vh;position:relative">
+    <div class="sig-pin" id="sigPin" data-phase="0">
+      <div class="sig-eyebrow">— Our quiet specialty</div>
+
+      <div class="sig-stage">
+        <div class="sig-side left">
+          <div class="tag">ಮಗುವಿಗೆ — for the child</div>
+          <h3>The first visit a <span class="it">child remembers fondly.</span></h3>
+          <p>Dr. Jayakumar's MDS is in Pedodontics — pediatric dentistry. That means a clinic built around the small things: a slower introduction to the chair, names for every instrument, parents in the room.</p>
+        </div>
+
+        <div class="sig-center" aria-hidden="true">
+          <svg viewBox="0 0 200 200">
+            <circle cx="70" cy="100" r="55" fill="none" stroke="#C8553D" stroke-width="1.5" opacity=".8"/>
+            <circle cx="130" cy="100" r="55" fill="none" stroke="#0F4C4A" stroke-width="1.5" opacity=".8"/>
+          </svg>
+          <div class="merge-text">One clinic.<br>Both, completely.</div>
+        </div>
+
+        <div class="sig-side right">
+          <div class="tag">ನಗುವಿಗೆ — for the smile</div>
+          <h3>The smile makeover an <span class="it">adult finally books.</span></h3>
+          <p>Three decades of cosmetic & restorative work — Invisalign, laser depigmentation, implants, crowns. A patient described their gap-closure here as affordable, clearly explained, and the best in Rajajinagar.</p>
+        </div>
+      </div>
+
+      <div class="sig-progress"><div class="bar" id="sigBar"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT DOCTOR -->
+<section class="about" id="doctor">
+  <div class="about-vis reveal">
+    <!-- PLACEHOLDER: replace with real clinic/doctor photo -->
+    <div class="credline">Dr. H. L. Jayakumar — ಡಾ. ಎಚ್. ಎಲ್. ಜಯಕುಮಾರ್</div>
+  </div>
+  <div class="about-content reveal">
+    <div class="sec-eyebrow">— The dentist</div>
+    <h2>Three decades, quietly building one of <span class="it">Bengaluru's most-trusted</span> dental practices.</h2>
+    <p>Dr. H. L. Jayakumar trained at Government Dental College, Bangalore, completed his MDS in Pedodontics, and has spent the last 30+ years in practice on Modi Hospital Road. He guides PhD candidates at Rajiv Gandhi Health University and lectures at international dental conferences.</p>
+    <p>His patients tend to describe the same two things: that the procedure was explained before it began, and that the cost was understood before they sat in the chair.</p>
+    <div class="creds">
+      <div class="cred"><span class="k">Degrees</span><span class="v">BDS, MDS (Pedodontics)</span></div>
+      <div class="cred"><span class="k">Trained at</span><span class="v">Govt. Dental College, Bangalore</span></div>
+      <div class="cred"><span class="k">Academic</span><span class="v">PhD Guide, RGUHS</span></div>
+      <div class="cred"><span class="k">Memberships</span><span class="v">IDA · IAPHD</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="reviews">
+  <div class="sec-head reveal">
+    <div class="sec-eyebrow">— Patient voices</div>
+    <h2 class="sec-title">5.0 stars. <span class="it">242 families.</span> One clinic.</h2>
+  </div>
+  <div class="test-meta reveal">
+    <span class="stars">★★★★★</span>
+    <span>5.0 average · 242 verified Google reviews · paraphrased below with permission</span>
+  </div>
+  <div class="test-track" id="testTrack">
+    <div class="test-card">
+      <div class="quote">"I found Dr. Jayakumar through Google Maps and noticed how consistent the reviews were. Now I understand why — the care has been the same every visit."</div>
+      <div class="stars">★★★★★</div>
+      <div class="who">— New patient, Rajajinagar</div>
+    </div>
+    <div class="test-card">
+      <div class="quote">"I'd been delaying treatment for years after a bad experience elsewhere. A friend referred me here. Dr. Jayakumar made the whole thing feel ordinary again — which is what I needed."</div>
+      <div class="stars">★★★★★</div>
+      <div class="who">— Referred patient, Bengaluru West</div>
+    </div>
+    <div class="test-card">
+      <div class="quote">"Had a tooth-gap procedure done here. It was affordable, fully explained beforehand, and the result was excellent. Easily the best clinic in Rajajinagar."</div>
+      <div class="stars">★★★★★</div>
+      <div class="who">— Cosmetic patient, Manjunath Nagar</div>
+    </div>
+    <div class="test-card">
+      <div class="quote">"Took my daughter for her first dental visit. She didn't cry. That alone earns the five stars from us."</div>
+      <div class="stars">★★★★★</div>
+      <div class="who">— Parent, paraphrased</div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="location" id="visit">
+  <div class="loc-map reveal" aria-hidden="true">
+    <svg viewBox="0 0 500 400" preserveAspectRatio="xMidYMid slice">
+      <rect width="500" height="400" fill="#0E2A2B"/>
+      <!-- abstract street grid -->
+      <g stroke="#1f6c69" stroke-width="1" opacity=".5">
+        <path d="M0 80 Q200 90 500 110"/>
+        <path d="M0 180 Q220 170 500 200"/>
+        <path d="M0 280 Q200 270 500 290"/>
+        <path d="M120 0 Q140 200 110 400"/>
+        <path d="M260 0 Q280 200 250 400"/>
+        <path d="M400 0 Q420 200 380 400"/>
+      </g>
+      <g stroke="#C8553D" stroke-width="1.5" opacity=".6">
+        <path d="M0 195 Q260 195 500 215"/>
+      </g>
+      <text x="20" y="395" font-family="Inter" font-size="9" fill="#F4EDE2" opacity=".4">WEST OF CHORD ROAD · RAJAJINAGAR</text>
+      <text x="270" y="180" font-family="Inter" font-size="8" fill="#F4EDE2" opacity=".4">MODI HOSPITAL RD</text>
+    </svg>
+    <div class="pin"><div class="dot"></div><div class="lbl">Shankari Dental — 726</div></div>
+  </div>
+  <div class="loc-info reveal">
+    <div class="sec-eyebrow">— Visit us</div>
+    <h3 style="margin-top:1rem">726, Modi Hospital Road</h3>
+    <div class="addr">Manjunath Nagar, Rajajinagar<br>Bengaluru, Karnataka 560010</div>
+    <div class="landmark">↳ Next to Bharath Petrol Bunk, West of Chord Road</div>
+
+    <div class="hours">
+      <h4>Hours <span class="status"><span class="dot"></span>Closed · opens Wed 10:00</span></h4>
+      <table>
+        <tr><td>Monday</td><td>10:00 – 13:30 · 17:00 – 20:30</td></tr>
+        <tr><td>Tuesday</td><td>10:00 – 13:30 · 17:00 – 20:30</td></tr>
+        <tr class="today"><td>Wednesday</td><td>10:00 – 13:30 · 17:00 – 20:30</td></tr>
+        <tr><td>Thursday</td><td>10:00 – 13:30 · 17:00 – 20:30</td></tr>
+        <tr><td>Friday</td><td>10:00 – 13:30 · 17:00 – 20:30</td></tr>
+        <tr><td>Saturday</td><td>10:00 – 14:00</td></tr>
+        <tr><td>Sunday</td><td>10:00 – 12:30 · by appointment</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking">
+  <div class="inner">
+    <div class="sec-eyebrow">— Book your visit</div>
+    <h2>Tell us what's bothering you. <span class="it">We'll take it from there.</span></h2>
+    <p>WhatsApp is the fastest way to reach the clinic. Send a message — Dr. Jayakumar or the front desk will reply with the soonest comfortable appointment slot.</p>
+    <a class="btn btn-primary" href="https://wa.me/919845151761?text=Hi%2C%20I%27d%20like%20to%20book%20an%20appointment%20at%20Shankari%20Dental%20Health%20Centre" data-cursor="WhatsApp">
+      Message on WhatsApp <span class="arrow">→</span>
+    </a>
+    <div class="alt">or call <a href="tel:+919845151761">098451 51761</a></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <div class="en">Shankari Dental Health Centre</div>
+      <div class="kn">ಶಂಕರಿ ಡೆಂಟಲ್ ಹೆಲ್ತ್ ಸೆಂಟರ್</div>
+      <p>A small, specialist dental practice in Rajajinagar — pediatric, cosmetic & restorative care led by Dr. H. L. Jayakumar.</p>
+    </div>
+    <div class="foot-col">
+      <h5>Visit</h5>
+      <p>726, Modi Hospital Road<br>Manjunath Nagar, Rajajinagar<br>Bengaluru 560010</p>
+    </div>
+    <div class="foot-col">
+      <h5>Contact</h5>
+      <a href="tel:+919845151761">+91 98451 51761</a>
+      <a href="https://wa.me/919845151761">WhatsApp</a>
+    </div>
+    <div class="foot-col">
+      <h5>Hours</h5>
+      <p>Mon – Fri · 10 – 1:30, 5 – 8:30<br>Sat · 10 – 2<br>Sun · by appointment</p>
+    </div>
+  </div>
+  <div class="foot-base">
+    <div>© Shankari Dental Health Centre · All rights reserved</div>
+    <div class="kn">ಶಂಕರಿ — ರಾಜಾಜಿನಗರ, ಬೆಂಗಳೂರು</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const touch = window.matchMedia('(hover: none)').matches;
+
+  /* -------- Preloader -------- */
+  window.addEventListener('load', ()=>{
+    setTimeout(()=>{
+      const pl = document.getElementById('preload');
+      pl.classList.add('gone');
+      setTimeout(()=>pl.remove(), 1100);
+    }, reduced ? 200 : 1000);
+  });
+
+  /* -------- Custom cursor (lerp) -------- */
+  if(!touch && !reduced){
+    const cursor = document.querySelector('.cursor');
+    const lbl = cursor.querySelector('.label');
+    cursor.classList.add('active');
+    let mx=window.innerWidth/2, my=window.innerHeight/2, cx=mx, cy=my;
+    window.addEventListener('mousemove', e=>{ mx=e.clientX; my=e.clientY; });
+    function tick(){
+      cx += (mx-cx)*0.18; cy += (my-cy)*0.18;
+      cursor.style.transform = `translate(${cx}px, ${cy}px) translate(-50%,-50%)`;
+      requestAnimationFrame(tick);
+    }
+    tick();
+    document.querySelectorAll('a, button, [data-cursor], .svc').forEach(el=>{
+      el.addEventListener('mouseenter', ()=>{
+        cursor.classList.add('is-hover');
+        lbl.textContent = el.dataset.cursor || '';
+      });
+      el.addEventListener('mouseleave', ()=>{
+        cursor.classList.remove('is-hover');
+        lbl.textContent = '';
+      });
+    });
+  }
+
+  /* -------- Nav scrolled state -------- */
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', ()=>{
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  /* -------- Reveal on scroll -------- */
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        if(e.target.classList.contains('reveal-stagger')) startCounters(e.target);
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.15});
+  document.querySelectorAll('.reveal, .reveal-stagger').forEach(el=>io.observe(el));
+
+  /* -------- Counters -------- */
+  function startCounters(scope){
+    scope.querySelectorAll('.count').forEach(el=>{
+      const target = parseFloat(el.dataset.target);
+      const decimals = parseInt(el.dataset.decimals||'0',10);
+      const dur = 1600;
+      const start = performance.now();
+      function step(now){
+        const t = Math.min(1, (now-start)/dur);
+        const eased = 1 - Math.pow(1-t, 3);
+        const val = target * eased;
+        el.textContent = decimals ? val.toFixed(decimals) : Math.round(val).toString();
+        if(t<1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
+  }
+
+  /* -------- Signature scroll-scrubbed section -------- */
+  if(!reduced){
+    const pin = document.getElementById('sigPin');
+    const bar = document.getElementById('sigBar');
+    const section = pin.parentElement;
+    function onScroll(){
+      const rect = section.getBoundingClientRect();
+      const total = section.offsetHeight - window.innerHeight;
+      const scrolled = Math.min(Math.max(-rect.top, 0), total);
+      const p = total>0 ? scrolled/total : 0;
+      bar.style.width = (p*100)+'%';
+      let phase = 0;
+      if(p > 0.66) phase = 2;
+      else if(p > 0.33) phase = 1;
+      pin.dataset.phase = phase;
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+  }
+
+  /* -------- Smooth scroll for anchor links (with offset for fixed nav) -------- */
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', e=>{
+      const id = a.getAttribute('href');
+      if(id.length<2) return;
+      const t = document.querySelector(id);
+      if(!t) return;
+      e.preventDefault();
+      const y = t.getBoundingClientRect().top + window.scrollY - 60;
+      window.scrollTo({top:y, behavior: reduced ? 'auto' : 'smooth'});
+    });
+  });
+})();
+</script>
+</body>
+</html>

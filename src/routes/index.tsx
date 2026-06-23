@@ -1,29 +1,25 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect } from "react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Your App" },
-      { name: "description", content: "Replace this with a one-sentence description of your app." },
-      { property: "og:title", content: "Your App" },
-      { property: "og:description", content: "Replace this with a one-sentence description of your app." },
+      { title: "Shankari Dental Health Centre — Dr. H. L. Jayakumar | Rajajinagar, Bengaluru" },
+      { name: "description", content: "Pediatric & cosmetic dentistry in Rajajinagar, Bengaluru. Dr. H. L. Jayakumar, BDS, MDS (Pedodontics) — 30+ years, 5.0★ from 242 patients." },
+      { property: "og:title", content: "Shankari Dental Health Centre — Rajajinagar, Bengaluru" },
+      { property: "og:description", content: "Gentle for your child. Precise for your smile. 30+ years of trusted dental care led by Dr. H. L. Jayakumar." },
     ],
   }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
+  useEffect(() => {
+    window.location.replace("/shankari.html");
+  }, []);
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", background: "#F4EDE2", color: "#0E2A2B", fontFamily: "serif" }}>
+      <p>Loading Shankari Dental…</p>
     </div>
   );
 }
