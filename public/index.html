@@ -1681,7 +1681,7 @@ input, select, textarea { font: inherit; border: none; outline: none; }
 
 /* === FLOATING ELEMENTS === */
 .floating-cta {
-  position: fixed; bottom: 1.5rem; right: 1.5rem;
+  position: fixed; bottom: 100px; right: 1.5rem;
   z-index: 990;
   display: flex; flex-direction: column; gap: 0.75rem;
   align-items: flex-end;
@@ -1795,6 +1795,19 @@ input, select, textarea { font: inherit; border: none; outline: none; }
     width: 92vw;
     margin: 0 auto;
   }
+
+  /* Before and After Grid */
+  .ba-scroll-wrapper {
+    flex-direction: column;
+    padding: 0 1.5rem 3rem;
+    gap: 1.5rem;
+    overflow: hidden;
+  }
+  .ba-card {
+    flex: auto;
+    width: 100%;
+    max-width: 100%;
+  }
 }
 
 @media (max-width: 500px) {
@@ -1850,7 +1863,7 @@ input, select, textarea { font: inherit; border: none; outline: none; }
   .footer-bottom { flex-direction: column; text-align: center; }
 
   /* Floating CTA */
-  .floating-cta { bottom: 1rem; right: 1rem; }
+  .floating-cta { bottom: 100px; right: 16px; }
   .floating-book { font-size: 0.78rem; padding: 0.75rem 1.1rem; }
 }
 
