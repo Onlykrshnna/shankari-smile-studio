@@ -307,11 +307,11 @@ input, select, textarea { font: inherit; border: none; outline: none; }
 }
 .nav.scrolled .nav-toggle span { background: var(--text); }
 /* When menu open — force white bg on nav so brand is visible */
-.nav.menu-open .nav-toggle span { background: var(--text); }
+.nav.menu-open .nav-toggle span { background: var(--text) !important; }
 .nav.menu-open { background: rgba(255,255,255,0.98) !important; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); box-shadow: 0 1px 0 rgba(0,0,0,0.06); }
-.nav.menu-open .nav-brand { color: var(--text); }
+.nav.menu-open .nav-brand { color: var(--text) !important; }
 .nav.menu-open .brand-logo { color: var(--primary) !important; }
-.nav.menu-open .nav-brand .dot { color: var(--primary); }
+.nav.menu-open .nav-brand .dot { color: var(--primary) !important; }
 .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .nav-toggle.open span:nth-child(2) { opacity: 0; width: 0; }
 .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
@@ -1792,8 +1792,13 @@ input, select, textarea { font: inherit; border: none; outline: none; }
 
   /* Fix hero to not overflow */
   .hero-content {
+    grid-template-columns: 1fr;
     width: 92vw;
     margin: 0 auto;
+    text-align: center;
+  }
+  .hero-actions {
+    justify-content: center;
   }
 
   /* Before and After Grid */
@@ -1818,15 +1823,18 @@ input, select, textarea { font: inherit; border: none; outline: none; }
 
   /* Fix hero overflow */
   .hero-content {
+    grid-template-columns: 1fr;
     padding-top: calc(var(--nav-height) + 1.5rem);
     padding-bottom: 3rem;
     width: 92vw;
+    text-align: center;
   }
 
+
   /* Section titles smaller on mobile */
-  .section-title { font-size: clamp(1.6rem, 6.5vw, 2.4rem); }
-  .section-subtitle { font-size: 0.92rem; }
-  .section-label { margin-bottom: 1rem; }
+  .section-title { font-size: clamp(1.6rem, 6.5vw, 2.4rem); text-align: center; width: 100%; }
+  .section-subtitle { font-size: 0.92rem; text-align: center; margin-left: auto; margin-right: auto; }
+  .section-label { margin-bottom: 1rem; justify-content: center; width: 100%; }
 
   /* Hero text */
   .hero h1 { font-size: clamp(1.9rem, 7.5vw, 2.8rem); }
@@ -1838,7 +1846,8 @@ input, select, textarea { font: inherit; border: none; outline: none; }
   .trust-bar { margin-top: -1.5rem; }
 
   /* Treatments grid */
-  .treatments-grid { margin-top: 1.75rem; }
+  .treatments-grid { margin-top: 1.75rem; grid-template-columns: 1fr; }
+  .tech-grid { grid-template-columns: 1fr; }
 
   /* Treatment modal */
   .treatment-modal-card { padding: 2rem 1.5rem; border-radius: 20px; }
