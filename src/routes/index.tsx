@@ -15,7 +15,7 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   useEffect(() => {
-    window.location.replace("/shankari.html");
+    window.location.replace("/index.html");
   }, []);
 
   return (
