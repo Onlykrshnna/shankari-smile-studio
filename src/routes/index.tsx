@@ -4,10 +4,10 @@ import { useEffect } from "react";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Amaya Dental Clinic — Best Dental Clinic in Sadashiv Peth, Pune" },
+      { title: "Dr. Harshal's dental Clinic — Best Dental Clinic in Sadashiv Peth, Pune" },
       { name: "description", content: "Expert dental care in Sadashiv Peth, Pune. 4.9★ from 276 patients. Invisalign, implants, veneers, teeth whitening, and preventive care." },
-      { property: "og:title", content: "Amaya Dental Clinic — Sadashiv Peth, Pune" },
-      { property: "og:description", content: "Healthy teeth and gums start with the right habits. Visit Amaya Dental for advanced, painless, and personalized dental treatments." },
+      { property: "og:title", content: "Dr. Harshal's dental Clinic — Sadashiv Peth, Pune" },
+      { property: "og:description", content: "Healthy teeth and gums start with the right habits. Visit Dr. Harshal's dental Clinic for advanced, painless, and personalized dental treatments." },
     ],
   }),
   component: Index,

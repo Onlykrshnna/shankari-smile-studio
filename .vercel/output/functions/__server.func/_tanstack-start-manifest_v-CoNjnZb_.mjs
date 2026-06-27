@@ -1,19 +1,19 @@
-//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-BCqPhVIm.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-CoNjnZb_.js
 var tsrStartManifest = () => ({ routes: {
 	__root__: {
 		filePath: "C:/Users/HP/Documents/Dentist folder/harshal dental/shankari-smile-studio/src/routes/__root.tsx",
 		children: ["/"],
-		preloads: ["/assets/index-DS8hl7cC.js"],
+		preloads: ["/assets/index-DB58ZlHP.js"],
 		scripts: [{ attrs: {
 			type: "module",
 			async: !0,
-			src: "/assets/index-DS8hl7cC.js"
+			src: "/assets/index-DB58ZlHP.js"
 		} }]
 	},
 	"/": {
 		filePath: "C:/Users/HP/Documents/Dentist folder/harshal dental/shankari-smile-studio/src/routes/index.tsx",
 		children: void 0,
-		preloads: ["/assets/routes-C4TkZQup.js"]
+		preloads: ["/assets/routes-L7urhdxr.js"]
 	}
 } });
 //#endregion
